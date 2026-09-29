@@ -1,0 +1,5 @@
+server: agentdb 1.3.0
+documented: 35   live: 35   (tools/list pages: 1)
+documented names that exist:        35  agentdb_clear_cache, agentdb_delete, agentdb_delete_batch, agentdb_init, agentdb_insert, agentdb_insert_batch, agentdb_pattern_search, agentdb_pattern_stats, agentdb_pattern_store, agentdb_pattern_store_batch, agentdb_search, agentdb_stats, causal_add_edge, causal_query, causal_traverse, consolidate_now, db_stats, experience_record, learner_discover, learning_end_session, learning_explain, learning_feedback, learning_metrics, learning_predict, learning_start_session, learning_train, learning_transfer, recall_with_certificate, reflexion_retrieve, reflexion_store, reflexion_store_batch, reward_signal, skill_create, skill_create_batch, skill_search
+documented names that do NOT exist: 0
+exit=0

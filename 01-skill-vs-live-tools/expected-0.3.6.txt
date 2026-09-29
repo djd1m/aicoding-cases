@@ -1,0 +1,28 @@
+server: agentdb 1.3.0
+documented: 26   live: 35   (tools/list pages: 1)
+documented names that exist:        3  agentdb_pattern_search, agentdb_pattern_stats, agentdb_pattern_store
+documented names that do NOT exist: 23
+  - agentdb_attestation_log
+  - agentdb_batch_insert
+  - agentdb_batch_search
+  - agentdb_causal_edge
+  - agentdb_causal_edge_delete
+  - agentdb_causal_explain
+  - agentdb_causal_node_delete
+  - agentdb_causal_query
+  - agentdb_export
+  - agentdb_feedback
+  - agentdb_hierarchical_delete
+  - agentdb_hierarchical_recall
+  - agentdb_hierarchical_store
+  - agentdb_import
+  - agentdb_learning_status
+  - agentdb_pattern_delete
+  - agentdb_reflexion_delete
+  - agentdb_reflexion_rebuild
+  - agentdb_reflexion_recall
+  - agentdb_reflexion_store
+  - agentdb_skill_compose
+  - agentdb_skill_create
+  - agentdb_skill_search
+exit=0
