@@ -1,0 +1,12 @@
+e8f91f73a 2026-09-21T17:23:33+00:00
+ci(os-matrix-pack-smoke): runner.temp перенесён из env job в env шагов — файл не проходил разбор, конвейер не стартовал ни разу
+
+GitHub отвергал файл: Unrecognized named-value 'runner' (строки 34–35) — контекст runner
+недоступен в job-level env. Скрипт требует явный абсолютный OS_MATRIX_RECEIPT_PATH, поэтому
+переменные перенесены на два шага-потребителя; вариант через GITHUB_ENV отвергнут собственным
+тестом конвейера (однострочные run ради pwsh/bash). Три теста конвейера 32/32.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+
+
+ .github/workflows/os-matrix-pack-smoke.yml | 12 +++++++++---
