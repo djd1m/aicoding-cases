@@ -1,0 +1,58 @@
+# Случай 1 (temp-root-post-run-check, F1). Ревизии приватного репозитория: 6e83b29f5~1 — база ревьюируемой правки, 6e83b29f5 — правка (25.09.2026); строку ввёл 97244a47c (11.09.2026).
+$ NEEDLE='delete process.env[RUN_ROOT_USERS_ENV]' bash finding-layers.sh file packages/@dzhechkov/core/src/vitest.dz-debris.shared.ts 140,150 6e83b29f5~1 6e83b29f5
+== packages/@dzhechkov/core/src/vitest.dz-debris.shared.ts, строки 140–150, ревизия 6e83b29f5~1
+   140  function teardownTmpRunRoot(runRoot: string): void {
+   141    const users = Number.parseInt(process.env[RUN_ROOT_USERS_ENV] ?? '1', 10);
+   142    if (users > 1) {
+   143      process.env[RUN_ROOT_USERS_ENV] = String(users - 1);
+   144      return;
+   145    }
+   146  
+   147    delete process.env[RUN_ROOT_USERS_ENV];
+   148    const entries = countEntries(runRoot);
+   149    rmSync(runRoot, { recursive: true, force: true });
+   150    console.error(`dz tmp-run-root: removed ${runRoot} (${entries} entries)`);
+   вхождений «delete process.env[RUN_ROOT_USERS_ENV]» в файле: 1
+== packages/@dzhechkov/core/src/vitest.dz-debris.shared.ts, строки 140–150, ревизия 6e83b29f5
+   140      // covers both the refusal and the snapshot (FR-3).
+   141      const sharedTmp = dirname(activeRunRoot);
+   142      const before = assertTempRootClean(sharedTmp);
+   143      const users = Number.parseInt(process.env[RUN_ROOT_USERS_ENV] ?? '1', 10);
+   144      process.env[RUN_ROOT_USERS_ENV] = String(users + 1);
+   145      return () => teardownTmpRunRoot(activeRunRoot, { tmp: sharedTmp, before, packageName, restoreEnv: () => {} });
+   146    }
+   147  
+   148    const systemTmp = tmpdir();
+   149    const before = assertTempRootClean(systemTmp);
+   150    const restoreEnv = captureTempEnv();
+   вхождений «delete process.env[RUN_ROOT_USERS_ENV]» в файле: 1
+   вхождений «delete process.env[RUN_ROOT_USERS_ENV]» в диффе 6e83b29f5~1..6e83b29f5: 0
+
+$ NEEDLE='delete process.env[RUN_ROOT_USERS_ENV]' bash finding-layers.sh file packages/@dzhechkov/core/src/vitest.dz-debris.shared.ts 170,180 6e83b29f5~1 6e83b29f5
+== packages/@dzhechkov/core/src/vitest.dz-debris.shared.ts, строки 170–180, ревизия 6e83b29f5~1
+   170        console.error(
+   171          `[dz-debris] WARNING: this test run seeded ${debris} (an in-process runCli defaulted `
+   172          + `--project to the package cwd). Removed so it cannot re-anchor cmd-usage logging and `
+   173          + `redden the neighbour package's suite. The seeder itself is still unfixed — see the `
+   174          + `dz-debris backlog item before trusting any per-call --project hygiene.`,
+   175        );
+   176      }
+   177    };
+   178  }
+   179  
+   180  export function dzTestRunGuards(packageRoot: string, packageName: string): () => void {
+   вхождений «delete process.env[RUN_ROOT_USERS_ENV]» в файле: 1
+== packages/@dzhechkov/core/src/vitest.dz-debris.shared.ts, строки 170–180, ревизия 6e83b29f5
+   170  function teardownTmpRunRoot(runRoot: string, ctx: PostRunContext): void {
+   171    const users = Number.parseInt(process.env[RUN_ROOT_USERS_ENV] ?? '1', 10);
+   172    if (users > 1) {
+   173      process.env[RUN_ROOT_USERS_ENV] = String(users - 1);
+   174      return;
+   175    }
+   176  
+   177    delete process.env[RUN_ROOT_USERS_ENV];
+   178    const entries = countEntries(runRoot);
+   179    rmSync(runRoot, { recursive: true, force: true });
+   180    console.error(`dz tmp-run-root: removed ${runRoot} (${entries} entries)`);
+   вхождений «delete process.env[RUN_ROOT_USERS_ENV]» в файле: 1
+   вхождений «delete process.env[RUN_ROOT_USERS_ENV]» в диффе 6e83b29f5~1..6e83b29f5: 0
